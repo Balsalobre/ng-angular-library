@@ -1,27 +1,57 @@
-# Weatherwidget
+# Librería para angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20.
+## Creación de librería
 
-## Development server
+```
+ng new weatherwidget --createApplication=false
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Proyecto vacío (no iniciado).
 
-## Code scaffolding
+```
+ng generate library weather
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Dentro del directorio **projects/weather/src/lib** nos encontramos el fichero **public-api.ts** punto de entrada a nuestra librería.
 
-## Build
+Necesitaremos una aplicación, para probar la biblioteca que estamos creando. La generamos mediante:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```
+ng generate application weathertest
+```
 
-## Running unit tests
+- En el fichero **angular.json** tenemos referenciado, tanto el proyecto de la librería como el que acabamos de crear.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- En el fichero **package.json** tenemos también una nueva dependencia del módulo que empaqueta nuestra librería.
 
-## Running end-to-end tests
+```
+    "ng-packagr": "^5.4.0",
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+- En el fichero **tsconfig.json** tenemos la referencia del punto de salida de la librería.
 
-## Further help
+```
+"paths": {
+      "weather": [
+        "dist/weather"
+      ],
+      "weather/*": [
+        "dist/weather/*"
+      ]
+    }
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- Agregamos nuestro componente a la librería ./projects/weather/src/lib/
+- Agregamos también al **package.json** el siguiente script:
+- Y lo lanzamos npm run weatherbuild
+  
+```
+    "weatherbuild": "ng build weather",
+```
+
+- Se puede observar como se crea la carpeta dist donde tendremos la librería lista para usar.
+
+## Proyecto de prueba importar librería
+
+- Importamos el módulo *[ import { WeatherModule } from 'weather'; ]* desde la librería --> Recordar que el la ruta introducida en tsconfig nos está ayudando a resolver este directorio.
+- En el *app.component.html* nos llevamos la etiqueta **<app-weather></app-weather>** y servimos el proyecto.
