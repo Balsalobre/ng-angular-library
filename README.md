@@ -55,3 +55,30 @@ ng generate application weathertest
 
 - Importamos el módulo *[ import { WeatherModule } from 'weather'; ]* desde la librería --> Recordar que el la ruta introducida en tsconfig nos está ayudando a resolver este directorio.
 - En el *app.component.html* nos llevamos la etiqueta **<app-weather></app-weather>** y servimos el proyecto.
+
+## Publicación de la librería
+
+1) Mediante un archivo ***tgz*** e instándolo en el directorio correspodiente:
+
+```
+cd dist/weather
+npm pack
+```
+
+Obtendríamos el fichero dentro de la carpeta dist, para instalar la librería tan sólo tendríamos que hacer un:
+
+```
+npm install ./dist/weather/weather-0.0.1.tgz 
+```
+
+Finalizada su instalación tendremos la librería instalada en nuestro package.json.
+
+Podemos comprobarlo comentando del tsconfig.json el path donde se encuentra la librería.
+
+```
+  "weather": "file:dist/weather/weather-0.0.1.tgz",
+```
+
+Si hacemos --> ng build weathertest y servimos desde la carpeta generada el proyecto dist/weathertest con un servidor (http-server)
+
+2) 
