@@ -29,6 +29,12 @@ security:
     sign:
       expiresIn: 7d
 
+# Web user interface
+web:
+  enable: true
+  title: Balsalobre Repo
+  gravatar: true
+
 # a list of other known repositories we can talk to
 uplinks:
   npmjs:

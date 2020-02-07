@@ -85,3 +85,5 @@ Si hacemos --> ng build weathertest y servimos desde la carpeta generada el proy
 2) Mediante un repositorio propio Verdaccio
 
 ### Instalacón del repositorio
+
+Instalación de Verdaccio [Verdaccio-docker-compose](verdaccio/docker-compose.yml)
