@@ -64,6 +64,7 @@ ng generate application weathertest
 cd dist/weather
 npm pack
 ```
+**Nota: hacer un script**
 
 Obtendríamos el fichero dentro de la carpeta dist, para instalar la librería tan sólo tendríamos que hacer un:
 
@@ -81,4 +82,8 @@ Podemos comprobarlo comentando del tsconfig.json el path donde se encuentra la l
 
 Si hacemos --> ng build weathertest y servimos desde la carpeta generada el proyecto dist/weathertest con un servidor (http-server)
 
-2) 
+2) Mediante un repositorio propio Verdaccio
+
+### Instalacón del repositorio
+
+
