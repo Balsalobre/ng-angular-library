@@ -1,5 +1,7 @@
 # Librería para angular
 
+[Ir a Repositorio (Verdaccio)](http://vps183761.vps.ovh.ca:4873)
+
 ## Creación de librería
 
 ```
@@ -58,7 +60,7 @@ ng generate application weathertest
 
 ## Publicación de la librería
 
-1) Mediante un archivo ***tgz*** e instándolo en el directorio correspodiente:
+### 1) Mediante un archivo ***tgz*** e instándolo en el directorio correspodiente:
 
 ```
 cd dist/weather
@@ -82,8 +84,51 @@ Podemos comprobarlo comentando del tsconfig.json el path donde se encuentra la l
 
 Si hacemos --> ng build weathertest y servimos desde la carpeta generada el proyecto dist/weathertest con un servidor (http-server)
 
-2) Mediante un repositorio propio Verdaccio
+### 2) Mediante un repositorio propio Verdaccio
 
-### Instalacón del repositorio
+#### Instalacón del repositorio
 
 Instalación de Verdaccio [Verdaccio-docker-compose](verdaccio/docker-compose.yml)
+
+Configuración de Verdaccio [Verdaccio-config](verdaccio/config/config.yaml)
+
+*Nota: recordar cambiar los permisos al fichero (htpasswd)*
+
+#### Publicación en Verdaccio
+
+- Lo primero que tendríamos que hacer es modificar la versión de nuestra librería (weather/package.json).
+    
+  package de la librería: [package.joson](projects/weather/package.json)
+
+
+- Extenderemos el script del package.json para poder publicar la librería en nuestro repo.
+  
+  package del proyecto general: [package.json](package.json)
+
+```
+  "weatherbuild": "ng build weather && cd dist/weather && npm publish --registry http://vps183761.vps.ovh.ca:4873"
+```
+
+- Lanzamos ahora el script --> npm run weatherbuild
+
+- Para hacer una instalación del paquete basta con 
+
+```
+  npm install @balsalobre/weather
+  npm i @balsalobre/weather --registry http://vps183761.vps.ovh.ca:4873 --save
+```
+
+Nota:
+
+```
+npm config set registry http://vps183761.vps.ovh.ca:4873/
+npm config set always-auth true
+npm login
+
+yarn config set registry http://vps183761.vps.ovh.ca:4873/
+yarn config get registry
+yarn config get always-auth
+yarn login (no-funciona)
+yarn add ngx-map-lib
+
+```
